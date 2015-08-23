@@ -12,6 +12,6 @@ export default Ember.Route.extend({
             notification: {
                 text: "Geofence 2"
             }
-        }]
+        }];
     }
 });
