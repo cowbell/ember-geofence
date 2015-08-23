@@ -1,1 +1,11 @@
-New geofence
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    <span>Adding new geofence</span>
+    <span flex></span>
+    {{#paper-button icon-button=true action="save"}}{{paper-icon icon="save"}}{{/paper-button}}
+  </div>
+{{/paper-toolbar}}
+
+{{paper-input label="Notification text" value=model.notificationText}}
+{{#paper-checkbox checked=onEnter}}On enter{{/paper-checkbox}}
+{{#paper-checkbox checked=onExit}}On exit{{/paper-checkbox}}

@@ -1,21 +1,21 @@
-{{#paper-nav-container open=drawerOpen class="ember-app"}}
-  {{#paper-toolbar}}
-    <div class="md-toolbar-tools right" layout-align="end center">
-      {{#paper-button icon-button=true action="transitionTo" param="geofences.new"}}{{paper-icon icon="add"}}{{/paper-button}}
-      {{#paper-button icon-button=true}}{{paper-icon icon="more-vert"}}{{/paper-button}}
-    </div>
-  {{/paper-toolbar}}
-{{/paper-nav-container}}
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    <span>Geofence regions</span>
+    <span flex></span>
+    {{#paper-button icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}
+    {{#paper-button icon-button=true}}{{paper-icon icon="more-vert"}}{{/paper-button}}
+  </div>
+{{/paper-toolbar}}
 
-{{#paper-content class="md-whiteframe-z1 list-demo"}}
+{{#paper-content class="md-whiteframe-z1"}}
   {{#paper-list}}
     {{#each model as |geofence|}}
-      {{#paper-item action="transitionTo" param="geofences.new" class="md-3-line"}}
+      {{#paper-item class="md-3-line" action="edit" param=geofence}}
         <div class="md-list-item-text">
           <p>
-            {{geofence.notification.text}}
+            {{geofence.notificationText}}
           </p>
-          {{#paper-button icon-button=true param=item action="secondaryMessageClick"}}
+          {{#paper-button icon-button=true action="delete" param=geofence}}
             {{paper-icon icon="delete"}}
           {{/paper-button}}
         </div>
