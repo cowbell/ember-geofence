@@ -6,16 +6,18 @@ import MapMarkerLayer from "ember-geofence/layers/map-marker-layer";
 export default EmberLeafletComponent.extend({
     classNames: ["map"],
 
-    center: Ember.computed("location", function () {
-        const location = this.get("location");
+    // center: Ember.on("init", Ember.computed("location", function () {
+    //     const location = this.get("location");
 
-        return L.latLng(location.get("latitude"), location.get("longitude"));
-    }),
+    //     return L.latLng(location.get("latitude"), location.get("longitude"));
+    // })),
 
-    markers: Ember.on("init", Ember.observer("location", function () {
+    onLocationChange: Ember.on("init", Ember.observer("location", function () {
         const location = this.get("location");
         const childLayers = this.get("childLayers");
         const markerLayer = childLayers[1];
+
+        this.set("center", L.latLng(location.get("latitude"), location.get("longitude")));
 
         markerLayer.reopen({
             content: [{

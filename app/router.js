@@ -9,9 +9,7 @@ Router.map(function() {
     this.resource("geofences", function() {
         this.route("new");
     });
-    this.resource("geofence", { path: "geofences/:geofence_id" }, function() {
-        this.route("edit", { path: "/edit" });
-    });
+    this.resource("geofence", { path: "/geofence/:geofence_id" });
 });
 
 export default Router;
