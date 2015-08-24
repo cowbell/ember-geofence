@@ -1,1 +1,8 @@
- @import 'ember-paper';
+@import 'ember-paper';
+
+.map {
+  width: 100%;
+  position: absolute;
+  top: 240px;
+  bottom: 0px;
+}

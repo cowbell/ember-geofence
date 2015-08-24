@@ -11,7 +11,7 @@ module.exports = function(environment) {
       'script-src': "'self'",
       'font-src': "'self' https://fonts.gstatic.com",
       'connect-src': "'self'",
-      'img-src': "'self' data:",
+      'img-src': "'self' data: http://*.mapbox.com http://*.openstreetmap.org",
       'media-src': "'self'"
     },
     EmberENV: {
