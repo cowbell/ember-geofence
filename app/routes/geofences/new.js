@@ -1,8 +1,20 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
+    geolocation: Ember.inject.service("geolocation"),
+
     model() {
-        return this.store.createRecord('geofence');
+        const geolocation = this.get('geolocation');
+
+        return geolocation.getCurrentPosition()
+            .then((position) => {
+                return this.store.createRecord('geofence', {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                });
+            }, (error) => {
+                return this.store.createRecord('geofence');
+            });
     },
 
     deactivate() {
