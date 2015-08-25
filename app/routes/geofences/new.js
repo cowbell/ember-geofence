@@ -10,7 +10,8 @@ export default Ember.Route.extend({
             .then((position) => {
                 return this.store.createRecord('geofence', {
                     latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
+                    longitude: position.coords.longitude,
+                    notification: this.store.createRecord("notification")
                 });
             }, (error) => {
                 return this.store.createRecord('geofence');

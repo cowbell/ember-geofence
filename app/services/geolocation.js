@@ -5,12 +5,12 @@ export default Ember.Service.extend({
     currentPositionCacheTimeout: 10000,
 
     init() {
-        if (!this.isPluginAvailable()) {
-            Ember.Logger.warn("Missing cordova geolocation plugin - add plugin using cordova plugin add cordova-plugin-geofence");
+        if (!this.isGeolocationAvailable()) {
+            Ember.Logger.warn("Geolocation not available");
         }
     },
 
-    isPluginAvailable() {
+    isGeolocationAvailable() {
         return typeof window.navigator.geolocation !== "undefined";
     },
 
@@ -19,24 +19,20 @@ export default Ember.Service.extend({
             const currentPositionCache = this.get("currentPositionCache");
 
             if (!currentPositionCache) {
-                window.navigator.geolocation.getCurrentPosition((position) => {
-                    this.set("currentPositionCache", position);
-                    resolve(position);
-                    Ember.run.later(() => {
-                        this.set("currentPositionCache", null);
-                    }, this.get("currentPositionCacheTimeout"));
-                }, reject, options);
+                if (!this.isGeolocationAvailable()) {
+                    reject("Geolocation not available");
+                } else {
+                    window.navigator.geolocation.getCurrentPosition((position) => {
+                        this.set("currentPositionCache", position);
+                        resolve(position);
+                        Ember.run.later(() => {
+                            this.set("currentPositionCache", null);
+                        }, this.get("currentPositionCacheTimeout"));
+                    }, reject, options);
+                }
             } else {
                 resolve(currentPositionCache);
             }
         });
-    },
-
-    watchPosition() {
-
-    },
-
-    clearWatch() {
-
     }
 });

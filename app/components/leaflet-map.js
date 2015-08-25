@@ -1,31 +1,23 @@
 import EmberLeafletComponent from "ember-leaflet/components/leaflet-map";
-import MarkerCollectionLayer from "ember-leaflet/layers/marker-collection";
 import TileLayer from "ember-leaflet/layers/tile";
 import MapMarkerLayer from "ember-geofence/layers/map-marker-layer";
+import CirleLayer from "ember-leaflet/layers/circle";
 
 export default EmberLeafletComponent.extend({
     classNames: ["map"],
 
-    // center: Ember.on("init", Ember.computed("location", function () {
-    //     const location = this.get("location");
+    center: Ember.computed("location", function () {
+        return L.latLng(this.get("location.latitude"), this.get("location.longitude"));
+    }),
 
-    //     return L.latLng(location.get("latitude"), location.get("longitude"));
-    // })),
+    markerPosition: Ember.computed("location", function () {
+        return L.latLng(this.get("location.latitude"), this.get("location.longitude"));
+    }),
 
-    onLocationChange: Ember.on("init", Ember.observer("location", function () {
-        const location = this.get("location");
-        const childLayers = this.get("childLayers");
-        const markerLayer = childLayers[1];
-
-        this.set("center", L.latLng(location.get("latitude"), location.get("longitude")));
-
-        markerLayer.reopen({
-            content: [{
-                location: L.latLng(location.get("latitude"), location.get("longitude")),
-                title: "Current location"
-            }]
-        });
-    })),
+    onMarkerPositionChanged: Ember.observer("markerPosition", function () {
+        this.set("location.latitude", this.get("markerPosition").lat);
+        this.set("location.longitude", this.get("markerPosition").lng);
+    }),
 
     childLayers: [
         TileLayer.extend({
@@ -37,8 +29,14 @@ export default EmberLeafletComponent.extend({
                 maxNativeZoom: 18
             }
         }),
-        MarkerCollectionLayer.extend({
-            itemLayerClass: MapMarkerLayer
+        MapMarkerLayer.extend({
+            location: Ember.computed.alias("controller.markerPosition")
+        }),
+        CirleLayer.extend({
+            radius: Ember.computed("controller.location.radius", function () {
+                return this.controller.get("location.radius");
+            }),
+            location: Ember.computed.alias("controller.markerPosition")
         })
     ]
 });

@@ -1,4 +1,15 @@
-{{paper-input label="Notification text" value=model.notificationText}}
-{{#paper-checkbox checked=model.onEnter}}On enter{{/paper-checkbox}}
-{{#paper-checkbox checked=model.onExit}}On exit{{/paper-checkbox}}
+{{paper-input label="Notification text" value=model.notification.text}}
+{{#paper-checkbox checked=onEnter}}On enter{{/paper-checkbox}}
+{{#paper-checkbox checked=onExit}}On exit{{/paper-checkbox}}
+
+<div layout>
+  <div layout layout-align="center center">
+    <span>on</span>
+  </div>
+  {{paper-slider flex=true warn=true discrete=true value=model.radius step="1" min="30" max="5000"}}
+  <div layout layout-align="center center">
+    {{model.radius}}m
+  </div>
+</div>
+
 {{leaflet-map location=model}}
