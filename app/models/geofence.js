@@ -1,13 +1,22 @@
-import DS from "ember-data";
-import Notification from "./notification"
-import TransitionType from "ember-geofence/services/transition-type"
+import Ember from "ember";
 
-export default DS.Model.extend({
-    latitude: DS.attr("number"),
-    longitude: DS.attr("number"),
-    radius: DS.attr("number", {defaultValue: 1000}),
-    transitionType: DS.attr("number", {defaultValue: TransitionType.ENTER}),
-    notification: DS.belongsTo("notification")
-});
+const Geofence = Ember.Object.extend(Ember.Copyable, {
+    copy () {
+        return Geofence.create({
+            id: this.id,
+            latitude: this.latitude,
+            longitude: this.longitude,
+            radius: this.radius,
+            transitionType: this.transitionType,
+            notification: {
+                id: this.notification.id,
+                title: this.notification.title,
+                text: this.notification.text,
+                icon: this.notification.icon,
+                openAppOnClick: this.notification.openAppOnClick
+            }
+        });
+    }
+})
 
-
+export default Geofence;

@@ -1,11 +1,12 @@
 import Ember from "ember";
+import Geofence from "ember-geofence/models/geofence";
 
 export default Ember.Route.extend({
     model: function(params) {
-        return this.store.find("geofence", params.geofence_id);
+        return Geofence.find(params.geofence_id);
     },
 
-    deactivate() {
-        this.get("currentModel").rollback();
+    setupController(controller, model) {
+        controller.set("model", Ember.copy(model));
     }
 });
