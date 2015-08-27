@@ -6,7 +6,7 @@ export default Ember.Service.extend({
     addOrUpdate(geofences) {
         let geofencesToAdd = Ember.makeArray(geofences);
 
-        return new Ember.RSVP.Promise((resolve, reject) => {
+        return new Ember.RSVP.Promise((resolve) => {
             geofencesToAdd.forEach((geofence) => {
                 const finded = this._geofences.find((g) => g.id === geofence.id);
 
@@ -23,7 +23,7 @@ export default Ember.Service.extend({
     remove(geofenceIds) {
         let ids = Ember.makeArray(geofenceIds);
 
-        return new Ember.RSVP.Promise((resolve, reject) => {
+        return new Ember.RSVP.Promise((resolve) => {
             ids.forEach((id) => {
                 const finded = this._geofences.find((g) => g.id === id);
 
@@ -36,14 +36,14 @@ export default Ember.Service.extend({
     },
 
     removeAll() {
-        return new Ember.RSVP.Promise((resolve, reject) => {
+        return new Ember.RSVP.Promise((resolve) => {
             this._geofences.clear();
             resolve();
         });
     },
 
     getWatched() {
-        return new Ember.RSVP.Promise((resolve, reject) => {
+        return new Ember.RSVP.Promise((resolve) => {
             resolve(this._geofences);
         });
     }

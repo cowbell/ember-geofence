@@ -1,3 +1,4 @@
+import Ember from "ember";
 import EmberLeafletComponent from "ember-leaflet/components/leaflet-map";
 import TileLayer from "ember-leaflet/layers/tile";
 import MapMarkerLayer from "ember-geofence/layers/map-marker-layer";

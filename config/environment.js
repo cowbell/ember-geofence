@@ -29,7 +29,11 @@ module.exports = function(environment) {
 
     cordova: {
       rebuildOnChange: false,
-      emulate: false
+      emulate: false,
+      livereload: {
+        enabled: true,
+        platform: "android"
+      }
     }
   };
 

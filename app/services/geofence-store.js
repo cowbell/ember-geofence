@@ -5,6 +5,7 @@ import generateGuid from "ember-geofence/utils/generate-guid";
 
 export default Ember.Service.extend({
     geofence: Ember.inject.service("geofence"),
+    _geofences: Ember.makeArray([]),
 
     createRecord(mergeProperties) {
         let properties = {
@@ -26,11 +27,15 @@ export default Ember.Service.extend({
     },
 
     saveRecord(geofence) {
-        return this.get("geofence").addOrUpdate(geofence);
+        return this.get("geofence").addOrUpdate(geofence).then(() => {
+            this._geofences.push(geofence);
+        });
     },
 
     destroyRecord(geofence) {
-        return this.get("geofence").remove(geofence.id);
+        return this.get("geofence").remove(geofence.id).then(() => {
+            this._geofences.removeObject(geofence);
+        });
     },
 
     find(id) {
@@ -45,11 +50,11 @@ export default Ember.Service.extend({
 
     findAll() {
         return this.get("geofence")
-            .getWatched();
-            // .then((geofences) => {
-            //     return geofences.map((geofence) => {
-            //         return Geofence.create(geofence);
-            //     });
-            // });
+            .getWatched()
+            .then((geofences) => {
+                this._geofences.clear();
+                Ember.makeArray(geofences).forEach((item) => this._geofences.push(item));
+                return this._geofences;
+            });
     }
 });

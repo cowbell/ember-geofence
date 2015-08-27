@@ -34,9 +34,8 @@ export default Ember.Service.extend({
     },
 
     getWatched() {
-        console.log("Geofence");
-        return this.isInitialized.then(() => {
-            return window.geofence.getWatched();
+        return window.geofence.getWatched().then((geofences) => {
+            return JSON.parse(geofences);
         });
     }
 });

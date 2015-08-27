@@ -24,4 +24,5 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
+    <plugin name="cordova-plugin-geofence" spec="https://github.com/cowbell/cordova-plugin-geofence" />
 </widget>

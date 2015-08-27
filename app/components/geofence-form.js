@@ -1,4 +1,5 @@
-import TransitionType from "ember-geofence/services/transition-type"
+import TransitionType from "ember-geofence/services/transition-type";
+import Ember from "ember";
 
 export default Ember.Component.extend({
     onEnter: Ember.on("init", Ember.computed("model.transitionType", function () {
