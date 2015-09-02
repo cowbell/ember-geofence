@@ -7,6 +7,10 @@
   </div>
 {{/paper-toolbar}}
 
+{{#if isWorking}}
+  {{paper-progress-linear}}
+{{/if}}
+
 {{#if isPending}}
   <div class="loading" layout="row" layout-align="center center">
     {{paper-progress-circular}}

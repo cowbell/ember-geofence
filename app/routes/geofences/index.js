@@ -20,14 +20,6 @@ export default Ember.Route.extend({
 
         edit(geofence) {
             this.transitionTo("geofence", geofence);
-        },
-
-        delete(geofence) {
-            this.get("geofence_store").destroyRecord(geofence);
-        },
-
-        refresh() {
-            this.refresh();
         }
     }
 });
