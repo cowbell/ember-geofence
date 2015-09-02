@@ -19,7 +19,7 @@ export default Ember.Route.extend({
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 });
-            }, (error) => {
+            }, () => {
                 return this.get("geofence_store").createRecord();
             });
 

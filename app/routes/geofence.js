@@ -17,7 +17,7 @@ export default Ember.Route.extend({
         if (model.promise) {
             controller.set("promise", model.promise);
         } else {
-            controller.set("promise", Ember.RSVP.Promise.resolve(model));
+            controller.set("promise", Ember.RSVP.Promise.resolve(Ember.copy(model)));
         }
     },
 

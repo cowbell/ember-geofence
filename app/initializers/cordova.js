@@ -1,5 +1,4 @@
 import ENV from "ember-geofence/config/environment";
-import Ember from "ember";
 
 // Defers readiness of applicatoin until plugins are ready.
 export default {

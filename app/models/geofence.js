@@ -3,20 +3,20 @@ import Ember from "ember";
 const Geofence = Ember.Object.extend(Ember.Copyable, {
     copy () {
         return Geofence.create({
-            id: this.id,
-            latitude: this.latitude,
-            longitude: this.longitude,
-            radius: this.radius,
-            transitionType: this.transitionType,
+            id: this.get("id"),
+            latitude: this.get("latitude"),
+            longitude: this.get("longitude"),
+            radius: this.get("radius"),
+            transitionType: this.get("transitionType"),
             notification: {
-                id: this.notification.id,
-                title: this.notification.title,
-                text: this.notification.text,
-                icon: this.notification.icon,
-                openAppOnClick: this.notification.openAppOnClick
+                id: this.get("notification.id"),
+                title: this.get("notification.title"),
+                text: this.get("notification.text"),
+                icon: this.get("notification.icon"),
+                openAppOnClick: this.get("notification.openAppOnClick")
             }
         });
     }
-})
+});
 
 export default Geofence;
