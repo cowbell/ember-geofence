@@ -3,10 +3,27 @@ import Geofence from "ember-geofence/models/geofence";
 
 export default Ember.Route.extend({
     model: function(params) {
-        return Geofence.find(params.geofence_id);
+        const fetchGeofence = Geofence.find(params.geofence_id)
+                .then((geofence) => {
+                    return Ember.copy(geofence);
+                });
+
+        return {
+            promise: fetchGeofence
+        };
     },
 
     setupController(controller, model) {
-        controller.set("model", Ember.copy(model));
+        if (model.promise) {
+            controller.set("promise", model.promise);
+        } else {
+            controller.set("promise", Ember.RSVP.Promise.resolve(model));
+        }
+    },
+
+    actions: {
+        back() {
+            this.transitionTo("geofences");
+        }
     }
 });

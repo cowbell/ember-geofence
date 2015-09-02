@@ -4,6 +4,12 @@ export default Ember.Route.extend({
     geolocation: Ember.inject.service("geolocation"),
     geofence_store: Ember.inject.service("geofence-store"),
 
+    actions: {
+        back() {
+            this.transitionTo("geofences");
+        }
+    },
+
     model() {
         const geolocation = this.get('geolocation');
 
@@ -16,6 +22,7 @@ export default Ember.Route.extend({
             }, (error) => {
                 return this.get("geofence_store").createRecord();
             });
+
         return {
             promise: currentPositionPromise
         };
