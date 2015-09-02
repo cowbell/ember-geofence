@@ -6,4 +6,11 @@
   </div>
 {{/paper-toolbar}}
 
-{{geofence-form model=model}}
+{{#if isLoading}}
+  <div class="loading" layout="row" layout-align="center center">
+    {{paper-progress-circular}}
+  </div>
+{{else}}
+  {{geofence-form model=model}}
+{{/if}}
+

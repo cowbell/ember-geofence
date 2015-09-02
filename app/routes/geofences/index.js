@@ -4,7 +4,13 @@ export default Ember.Route.extend({
     geofence_store: Ember.inject.service("geofence-store"),
 
     model() {
-        return this.get("geofence_store").findAll();
+        return {
+            promise: this.get("geofence_store").findAll()
+        };
+    },
+
+    setupController(controller, model) {
+        controller.set("promise", model.promise);
     },
 
     actions: {
@@ -18,6 +24,10 @@ export default Ember.Route.extend({
 
         delete(geofence) {
             this.get("geofence_store").destroyRecord(geofence);
+        },
+
+        refresh() {
+            this.refresh();
         }
     }
 });

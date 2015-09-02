@@ -7,7 +7,11 @@
   </div>
 {{/paper-toolbar}}
 
-{{#paper-content class="md-whiteframe-z1"}}
+{{#if isPending}}
+  <div class="loading" layout="row" layout-align="center center">
+    {{paper-progress-circular}}
+  </div>
+{{else}}
   {{#paper-list}}
     {{#each model as |geofence|}}
       {{#paper-item class="md-3-line" action="edit" param=geofence}}
@@ -21,5 +25,15 @@
         </div>
       {{/paper-item}}
     {{/each}}
+
+    {{#unless anyGeofences}}
+      {{#paper-card}}
+        {{#paper-card-content}}
+          <p>
+            There are no geofences added yet.
+          </p>
+        {{/paper-card-content}}
+      {{/paper-card}}
+    {{/unless}}
   {{/paper-list}}
-{{/paper-content}}
+{{/if}}

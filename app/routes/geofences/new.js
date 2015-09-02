@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     model() {
         const geolocation = this.get('geolocation');
 
-        return geolocation.getCurrentPosition()
+        var currentPositionPromise = geolocation.getCurrentPosition()
             .then((position) => {
                 return this.get("geofence_store").createRecord({
                     latitude: position.coords.latitude,
@@ -16,9 +16,12 @@ export default Ember.Route.extend({
             }, (error) => {
                 return this.get("geofence_store").createRecord();
             });
+        return {
+            promise: currentPositionPromise
+        };
     },
 
-    deactivate() {
-        // this.get("currentModel").rollback();
+    setupController(controller, model) {
+        controller.set("promise", model.promise);
     }
 });

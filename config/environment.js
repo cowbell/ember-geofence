@@ -33,7 +33,7 @@ module.exports = function(environment) {
       emulate: false,
       platform: "android",
       liveReload: {
-        enabled: true,
+        enabled: false,
         platform: "android"
       }
     }

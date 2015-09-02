@@ -1,8 +1,12 @@
 @import 'ember-paper';
 
+div.loading {
+  height: 400px;
+}
+
 .map {
   width: 100%;
   position: absolute;
-  top: 300px;
+  top: 250px;
   bottom: 0px;
 }
