@@ -11,6 +11,8 @@ export default EmberLeafletComponent.extend({
         return L.latLng(this.get("location.latitude"), this.get("location.longitude"));
     }),
 
+    zoom: 12,
+
     markerPosition: Ember.computed("location", function () {
         return L.latLng(this.get("location.latitude"), this.get("location.longitude"));
     }),
