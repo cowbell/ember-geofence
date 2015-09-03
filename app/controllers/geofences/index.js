@@ -13,6 +13,14 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
             this.get("geofence_store").destroyRecord(geofence).then(() => {
                 this.set("isWorking", false);
             });
+        },
+
+        add() {
+            this.transitionToRoute("geofences.new");
+        },
+
+        edit(geofence) {
+            this.transitionToRoute("geofence", geofence);
         }
     }
 });

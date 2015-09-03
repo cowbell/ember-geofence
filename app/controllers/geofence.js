@@ -10,6 +10,10 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
                 this.set("isWorking", false);
                 this.transitionToRoute("geofences");
             });
+        },
+
+        back() {
+            this.transitionTo("geofences");
         }
     }
 });

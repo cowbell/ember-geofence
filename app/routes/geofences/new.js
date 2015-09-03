@@ -4,12 +4,6 @@ export default Ember.Route.extend({
     geolocation: Ember.inject.service("geolocation"),
     geofence_store: Ember.inject.service("geofence-store"),
 
-    actions: {
-        back() {
-            this.transitionTo("geofences");
-        }
-    },
-
     model() {
         const geolocation = this.get('geolocation');
 

@@ -11,15 +11,5 @@ export default Ember.Route.extend({
 
     setupController(controller, model) {
         controller.set("promise", model.promise);
-    },
-
-    actions: {
-        add() {
-            this.transitionTo("geofences.new");
-        },
-
-        edit(geofence) {
-            this.transitionTo("geofence", geofence);
-        }
     }
 });
