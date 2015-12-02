@@ -5,7 +5,6 @@ module.exports = function(environment) {
     modulePrefix: 'ember-geofence',
     environment: environment,
     baseURL: '/',
-    defaultLocationType: 'auto',
     contentSecurityPolicy: {
       'default-src': "'none'",
       'script-src': "'self'",
@@ -15,6 +14,7 @@ module.exports = function(environment) {
       'media-src': "'self'",
       'style-src': "'self' 'unsafe-inline'"
     },
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
