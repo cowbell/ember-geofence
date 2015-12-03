@@ -3,7 +3,21 @@
     <span>Geofence regions</span>
     <span flex></span>
     {{#paper-button icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}
-    {{#paper-button icon-button=true}}{{paper-icon icon="more-vert"}}{{/paper-button}}
+
+    {{#paper-menu as |menu|}}
+      {{#paper-button target=menu action="toggleMenu" icon-button=true}}
+        {{paper-icon class="md-menu-origin" icon="more-vert"}}
+      {{/paper-button}}
+    {{else}}
+      {{#paper-menu-item action="testApplication"}}
+        {{paper-icon icon="check" class="md-menu-align-target"}}
+        <span>Test application</span>
+      {{/paper-menu-item}}
+      {{#paper-menu-item action="removeAll"}}
+        {{paper-icon icon="delete" class="md-menu-align-target"}}
+        <span>Remove all geofences</span>
+      {{/paper-menu-item}}
+    {{/paper-menu}}
   </div>
 {{/paper-toolbar}}
 

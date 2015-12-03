@@ -21,6 +21,14 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
 
         edit(geofence) {
             this.transitionToRoute("geofence", geofence);
+        },
+
+        testApplication() {
+            window.location.href = "cdvtests/index.html";
+        },
+
+        removeAll() {
+            console.log("remove all geofences");
         }
     }
 });

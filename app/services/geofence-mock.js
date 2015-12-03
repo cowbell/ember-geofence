@@ -2,6 +2,7 @@ import Ember from "ember";
 
 export default Ember.Service.extend({
     _geofences: Ember.makeArray([]),
+    // Only for test purposes
     simulateDelay: 1000,
 
     addOrUpdate(geofences) {
