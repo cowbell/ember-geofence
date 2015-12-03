@@ -13,7 +13,7 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
         },
 
         back() {
-            this.transitionTo("geofences");
+            this.transitionToRoute("geofences");
         }
     }
 });
