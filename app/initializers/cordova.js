@@ -4,7 +4,7 @@ import ENV from "ember-geofence/config/environment";
 export default {
     name: "cordova",
 
-    initialize(container, application) {
+    initialize(application) {
 
         if(typeof cordova !== "undefined") {
             appendCSPMeta();

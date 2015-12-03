@@ -38,7 +38,7 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
-    "ember-leaflet": "git://github.com/gabesmed/ember-leaflet.git#3d6d04d8feb16e73f8c833aec88b7fde09d978d8",
+    "ember-leaflet": "2.1.1",
     "ember-paper": "0.2.10",
     "ember-resolver": "2.0.3"
   }

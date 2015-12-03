@@ -5,7 +5,7 @@ export default {
     name: "geofence",
     after: "cordova",
 
-    initialize(container, application) {
+    initialize(application) {
         const isCordova = typeof cordova !== "undefined";
 
         application.register("service:geofence", isCordova ? Geofence : GeofenceMock);
