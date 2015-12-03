@@ -6,7 +6,7 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
     actions: {
         save() {
             this.set("isWorking", true);
-            this.get("geofence_store").saveRecord(this.get("model")).then(() => {
+            this.get("geofence_store").save(this.get("model")).then(() => {
                 this.set("isWorking", false);
                 this.transitionToRoute("geofences");
             });

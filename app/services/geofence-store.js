@@ -7,7 +7,7 @@ export default Ember.Service.extend({
     geofence: Ember.inject.service("geofence"),
     _geofences: Ember.makeArray([]),
 
-    createRecord(mergeProperties) {
+    create(mergeProperties) {
         let properties = {
             id: generateGuid(),
             radius: 1000,
@@ -26,15 +26,21 @@ export default Ember.Service.extend({
         return Geofence.create(properties);
     },
 
-    saveRecord(geofence) {
+    save(geofence) {
         return this.get("geofence").addOrUpdate(geofence).then(() => {
             this._geofences.push(geofence);
         });
     },
 
-    destroyRecord(geofence) {
+    destroy(geofence) {
         return this.get("geofence").remove(geofence.id).then(() => {
             this._geofences.removeObject(geofence);
+        });
+    },
+
+    destroyAll() {
+        return this.get("geofence").removeAll().then(() => {
+            this._geofences.clear();
         });
     },
 

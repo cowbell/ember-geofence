@@ -9,12 +9,12 @@ export default Ember.Route.extend({
 
         var currentPositionPromise = geolocation.getCurrentPosition()
             .then((position) => {
-                return this.get("geofence_store").createRecord({
+                return this.get("geofence_store").create({
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 });
             }, () => {
-                return this.get("geofence_store").createRecord();
+                return this.get("geofence_store").create();
             });
 
         return {

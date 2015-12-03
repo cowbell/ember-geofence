@@ -43,8 +43,10 @@ export default Ember.Service.extend({
 
     removeAll() {
         return new Ember.RSVP.Promise((resolve) => {
-            this._geofences.clear();
-            resolve();
+            Ember.run.later(() => {
+                this._geofences.clear();
+                resolve();
+            }, this.simulateDelay);
         });
     },
 

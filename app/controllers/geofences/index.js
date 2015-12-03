@@ -10,7 +10,7 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
     actions: {
         delete(geofence) {
             this.set("isWorking", true);
-            this.get("geofence_store").destroyRecord(geofence).then(() => {
+            this.get("geofence_store").destroy(geofence).then(() => {
                 this.set("isWorking", false);
             });
         },
@@ -28,7 +28,10 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
         },
 
         removeAll() {
-            console.log("remove all geofences");
+            this.set("isWorking", true);
+            this.get("geofence_store").destroyAll().then(() => {
+                this.set("isWorking", false);
+            });
         }
     }
 });
