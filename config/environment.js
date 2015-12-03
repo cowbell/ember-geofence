@@ -8,7 +8,7 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'default-src': "'none'",
       'script-src': "'self'",
-      'font-src': "'self' https://fonts.gstatic.com",
+      'font-src': "'self' https://fonts.gstatic.com data:",
       'connect-src': "'self'",
       'img-src': "'self' data: http://*.mapbox.com http://*.openstreetmap.org",
       'media-src': "'self'",

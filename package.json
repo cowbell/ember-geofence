@@ -33,13 +33,13 @@
     "ember-cli-inject-live-reload": "^1.3.1",
     "ember-cli-qunit": "^1.0.4",
     "ember-cli-release": "0.2.8",
+    "ember-cli-sass": "5.2.0",
     "ember-cli-sri": "^1.2.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-leaflet": "git://github.com/gabesmed/ember-leaflet.git#3d6d04d8feb16e73f8c833aec88b7fde09d978d8",
-    "ember-localstorage-adapter": "0.5.4",
-    "ember-paper": "0.2.7",
-    "ember-data": "1.13.15",
     "ember-disable-proxy-controllers": "^1.0.1",
-    "ember-export-application-global": "^1.0.4"
+    "ember-export-application-global": "^1.0.4",
+    "ember-leaflet": "git://github.com/gabesmed/ember-leaflet.git#3d6d04d8feb16e73f8c833aec88b7fde09d978d8",
+    "ember-paper": "0.2.10",
+    "ember-resolver": "2.0.3"
   }
 }
