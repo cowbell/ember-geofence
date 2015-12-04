@@ -7,7 +7,6 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <!-- <content src="http://192.168.0.105:4200" /> -->
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
@@ -25,5 +24,8 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
-    <plugin name="cordova-plugin-geofence" spec="https://github.com/cowbell/cordova-plugin-geofence" />
+    <plugin name="cordova-plugin-geofence" spec="~0.5.0" />
+    <plugin name="cordova-plugin-geofence-test" spec="https://github.com/cowbell/cordova-plugin-geofence.git#:/tests" />
+    <plugin name="cordova-plugin-geolocation" spec="~1.0.1" />
+    <plugin name="cordova-plugin-geolocation-tests" spec="http://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation#:/tests" />
 </widget>
