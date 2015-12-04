@@ -1,16 +1,17 @@
-{{paper-input label="Notification text" value=model.notification.text}}
 <div layout="row">
-  <div flex layout layout-align="center center">
-    {{#paper-checkbox checked=onEnter}}On enter{{/paper-checkbox}}
-  </div>
-  <div flex layout layout-align="center center">
-    {{#paper-checkbox checked=onExit}}On exit{{/paper-checkbox}}
-  </div>
+  {{paper-input label="Notification text" flex=true value=model.notification.text}}
+  {{#paper-select placeholder="Notify On" item-label-callback=transitionTypeLabel model=model.transitionType}}
+    {{#each transitionTypes as |type|}}
+      {{#paper-option value=type.id}}
+        {{type.label}}
+      {{/paper-option}}
+    {{/each}}
+  {{/paper-select}}
 </div>
 
 <div layout>
   <div layout layout-align="center center">
-    <span>on</span>
+    <span>Within</span>
   </div>
   {{paper-slider flex=true warn=true discrete=true value=model.radius step="1" min="30" max="5000"}}
   <div layout layout-align="center center">

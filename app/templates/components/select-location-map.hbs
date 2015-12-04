@@ -1,4 +1,4 @@
-{{#leaflet-map lat=location.latitude lng=location.longitude zoom=zoom}}
+{{#leaflet-map lat=location.latitude lng=location.longitude zoom=zoom onClick=(action "mapClicked")}}
   {{tile-layer url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}}
   {{marker-layer lat=location.latitude lng=location.longitude draggable=true onDragend=(action "updateLocation")}}
   {{circle-layer lat=location.latitude lng=location.longitude radius=location.radius}}

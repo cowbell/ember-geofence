@@ -7,6 +7,13 @@ export default Ember.Component.extend({
     zoom: 12,
 
     actions: {
+        mapClicked(event) {
+            this.setProperties({
+                "location.latitude": event.latlng.lat,
+                "location.longitude": event.latlng.lng
+            });
+        },
+
         updateLocation(event) {
             let location = event.target.getLatLng();
 
