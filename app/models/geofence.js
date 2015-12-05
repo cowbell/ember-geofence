@@ -1,7 +1,7 @@
 import Ember from "ember";
 
 const Geofence = Ember.Object.extend(Ember.Copyable, {
-    copy () {
+    copy() {
         return Geofence.create({
             id: this.get("id"),
             latitude: this.get("latitude"),
@@ -16,6 +16,10 @@ const Geofence = Ember.Object.extend(Ember.Copyable, {
                 openAppOnClick: this.get("notification.openAppOnClick")
             }
         });
+    },
+
+    toJson() {
+        return JSON.parse(JSON.stringify(this));
     }
 });
 
