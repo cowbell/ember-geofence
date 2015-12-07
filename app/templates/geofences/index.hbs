@@ -2,8 +2,7 @@
   <div class="md-toolbar-tools">
     <span>Geofence regions</span>
     <span flex></span>
-    {{#paper-button icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}
-
+    
     {{#paper-menu as |menu|}}
       {{#paper-button target=menu action="toggleMenu" icon-button=true}}
         {{paper-icon class="md-menu-origin" icon="more-vert"}}
@@ -54,4 +53,5 @@
       {{/paper-card}}
     {{/unless}}
   {{/paper-list}}
+  {{#paper-button classNames="md-fab md-fab-bottom-right" icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}
 {{/if}}
