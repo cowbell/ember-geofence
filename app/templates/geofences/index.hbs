@@ -1,4 +1,4 @@
-{{#paper-toolbar}}
+{{#paper-toolbar classNames="md-scroll-shrink"}}
   <div class="md-toolbar-tools">
     <span>Geofence regions</span>
     <span flex></span>
@@ -23,35 +23,36 @@
 {{#if isWorking}}
   {{paper-progress-linear}}
 {{/if}}
-
-{{#if isPending}}
-  <div class="loading" layout="row" layout-align="center center">
-    {{paper-progress-circular}}
-  </div>
-{{else}}
-  {{#paper-list}}
-    {{#each model as |geofence|}}
+{{#paper-content}}
+  {{#if isPending}}
+    <div class="loading" layout="row" layout-align="center center">
+      {{paper-progress-circular}}
+    </div>
+  {{else}}
+    {{#paper-list}}
+      {{#each model as |geofence|}}
       {{#paper-item class="md-3-line" action="edit" param=geofence}}
-        <div class="md-list-item-text">
-          <p>
-            {{geofence.notification.text}}
-          </p>
-          {{#paper-button icon-button=true action="delete" param=geofence}}
-            {{paper-icon icon="delete"}}
-          {{/paper-button}}
-        </div>
+      <div class="md-list-item-text">
+        <p>
+          {{geofence.notification.text}}
+        </p>
+        {{#paper-button icon-button=true action="delete" param=geofence}}
+        {{paper-icon icon="delete"}}
+        {{/paper-button}}
+      </div>
       {{/paper-item}}
-    {{/each}}
+      {{/each}}
 
-    {{#unless anyGeofences}}
-      {{#paper-card}}
-        {{#paper-card-content}}
-          <p>
-            There are no geofences added yet.
-          </p>
-        {{/paper-card-content}}
-      {{/paper-card}}
-    {{/unless}}
-  {{/paper-list}}
-  {{#paper-button classNames="md-fab md-fab-bottom-right" icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}
-{{/if}}
+      {{#unless anyGeofences}}
+        {{#paper-card}}
+          {{#paper-card-content}}
+            <p>
+              There are no geofences added yet.
+            </p>
+          {{/paper-card-content}}
+        {{/paper-card}}
+      {{/unless}}
+    {{/paper-list}}
+  {{/if}}
+{{/paper-content}}
+{{#paper-button classNames="md-fab md-fab-bottom-right" icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}

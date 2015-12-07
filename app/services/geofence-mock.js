@@ -1,9 +1,16 @@
 import Ember from "ember";
 
+const FIXTURES = [
+    {id: 1, latitude: 50.3021079, longitude: 18.6771861, radius: 3000, transitionType: 1, notification: {text: "Gliwice Train Station"}},
+    {id: 2, latitude: 50.4728049, longitude: 19.0736874, radius: 3000, transitionType: 1, notification: {text: "Pyrzowice Airport"}},
+    {id: 3, latitude: 50.0671974, longitude: 19.945232, radius: 3000, transitionType: 1, notification: {text: "Cracow Main Station"}},
+    {id: 4, latitude: 52.2287803, longitude: 21.001124, radius: 3000, transitionType: 1, notification: {text: "Warsaw Main Station"}}
+];
+
 export default Ember.Service.extend({
-    _geofences: Ember.makeArray([]),
+    _geofences: Ember.makeArray(FIXTURES),
     // Only for test purposes
-    simulateDelay: 1000,
+    simulateDelay: 500,
 
     addOrUpdate(geofences) {
         let geofencesToAdd = Ember.makeArray(geofences);
