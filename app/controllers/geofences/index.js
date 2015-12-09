@@ -1,8 +1,6 @@
 import Ember from "ember";
 
 export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
-    geofence_store: Ember.inject.service("geofence-store"),
-
     anyGeofences: Ember.computed("model.length", function () {
         return this.get("model").length > 0;
     }),
@@ -10,7 +8,7 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
     actions: {
         delete(geofence) {
             this.set("isWorking", true);
-            this.get("geofence_store").destroy(geofence).then(() => {
+            this.get("geofence-store").destroy(geofence).then(() => {
                 this.set("isWorking", false);
             });
         },
@@ -29,7 +27,7 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
 
         removeAll() {
             this.set("isWorking", true);
-            this.get("geofence_store").destroyAll().then(() => {
+            this.get("geofence-store").destroyAll().then(() => {
                 this.set("isWorking", false);
             });
         }

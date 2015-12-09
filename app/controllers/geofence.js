@@ -1,12 +1,10 @@
 import Ember from "ember";
 
-export default Ember.Controller.extend({
-    geofence_store: Ember.inject.service("geofence-store"),
-
+export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
     actions: {
         save() {
             this.set("isWorking", true);
-            this.get("geofence_store").save(this.get("model")).then(() => {
+            this.get("geofence-store").save(this.get("model")).then(() => {
                 this.set("isWorking", false);
                 this.transitionToRoute("geofences");
             });

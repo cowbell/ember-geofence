@@ -4,8 +4,8 @@ export default {
     name: "geofence-store",
 
     initialize(application) {
-        application.register("geofence-store:main", GeofenceStore);
-        application.inject("controller", "geofence", "geofence-store:main");
-        application.inject("route", "geofence", "geofence-store:main");
+        application.register("service:geofence-store", GeofenceStore);
+        application.inject("controller", "geofence-store", "service:geofence-store");
+        application.inject("route", "geofence-store", "service:geofence-store");
     }
 };
