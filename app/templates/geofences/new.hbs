@@ -11,13 +11,6 @@
   {{paper-progress-linear}}
 {{/if}}
 
-{{#if isPending}}
-  <div class="loading" layout="row" layout-align="center center">
-    {{paper-progress-circular}}
-  </div>
-{{else}}
+{{#loading-container promise=promise}}
   {{geofence-form model=model}}
-{{/if}}
-
-
-
+{{/loading-container}}

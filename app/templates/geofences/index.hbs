@@ -2,7 +2,7 @@
   <div class="md-toolbar-tools">
     <span>Geofence regions</span>
     <span flex></span>
-    
+
     {{#paper-menu as |menu|}}
       {{#paper-button target=menu action="toggleMenu" icon-button=true}}
         {{paper-icon class="md-menu-origin" icon="more-vert"}}
@@ -24,12 +24,8 @@
   {{#if isWorking}}
     {{paper-progress-linear}}
   {{/if}}
-  
-  {{#if isPending}}
-    <div class="loading" layout="row" layout-align="center center">
-      {{paper-progress-circular}}
-    </div>
-  {{else}}
+
+  {{#loading-container promise=promise}}
     {{#paper-list}}
       {{#each model as |geofence|}}
       {{#paper-item class="md-3-line" action="edit" param=geofence}}
@@ -54,6 +50,6 @@
         {{/paper-card}}
       {{/unless}}
     {{/paper-list}}
-  {{/if}}
+  {{/loading-container}}
 {{/paper-content}}
 {{#paper-button classNames="md-fab md-fab-bottom-right" icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}

@@ -1,0 +1,7 @@
+{{#if isPending}}
+  <div class="loading" layout="row" layout-align="center center">
+    {{paper-progress-circular}}
+  </div>
+{{else}}
+  {{yield}}
+{{/if}}
