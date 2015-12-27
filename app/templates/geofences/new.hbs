@@ -7,9 +7,7 @@
   </div>
 {{/paper-toolbar}}
 
-{{#if isWorking}}
-  {{paper-progress-linear}}
-{{/if}}
+{{working-indicator isWorking=isWorking}}
 
 {{#loading-container promise=promise}}
   {{geofence-form model=model}}

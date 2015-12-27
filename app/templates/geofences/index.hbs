@@ -21,35 +21,10 @@
 {{/paper-toolbar}}
 
 {{#paper-content}}
-  {{#if isWorking}}
-    {{paper-progress-linear}}
-  {{/if}}
+  {{working-indicator isWorking=isWorking}}
 
   {{#loading-container promise=promise}}
-    {{#paper-list}}
-      {{#each model as |geofence|}}
-      {{#paper-item class="md-3-line" action="edit" param=geofence}}
-      <div class="md-list-item-text">
-        <p>
-          {{geofence.notification.text}}
-        </p>
-        {{#paper-button icon-button=true action="delete" param=geofence}}
-        {{paper-icon icon="delete"}}
-        {{/paper-button}}
-      </div>
-      {{/paper-item}}
-      {{/each}}
-
-      {{#unless anyGeofences}}
-        {{#paper-card}}
-          {{#paper-card-content}}
-            <p>
-              There are no geofences added yet.
-            </p>
-          {{/paper-card-content}}
-        {{/paper-card}}
-      {{/unless}}
-    {{/paper-list}}
+    {{geofence-list geofences=model edit="edit" delete="delete"}}
   {{/loading-container}}
 {{/paper-content}}
 {{#paper-button classNames="md-fab md-fab-bottom-right" icon-button=true action="add"}}{{paper-icon icon="add"}}{{/paper-button}}

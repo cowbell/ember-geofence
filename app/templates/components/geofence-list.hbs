@@ -1,0 +1,24 @@
+{{#paper-list}}
+  {{#each geofences as |geofence|}}
+    {{#paper-item class="md-3-line" action="edit" param=geofence}}
+      <div class="md-list-item-text">
+        <p>
+          {{geofence.notification.text}}
+        </p>
+        {{#paper-button icon-button=true action="delete" param=geofence}}
+          {{paper-icon icon="delete"}}
+        {{/paper-button}}
+      </div>
+    {{/paper-item}}
+  {{/each}}
+
+  {{#unless anyGeofences}}
+    {{#paper-card}}
+      {{#paper-card-content}}
+        <p>
+          There are no geofences added yet.
+        </p>
+      {{/paper-card-content}}
+    {{/paper-card}}
+  {{/unless}}
+{{/paper-list}}
