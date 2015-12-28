@@ -1,13 +1,11 @@
 import Ember from "ember";
+import WorkingIndicatorMixin from "ember-geofence/mixins/working-indicator";
 
-export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
+export default Ember.Controller.extend(Ember.PromiseProxyMixin, WorkingIndicatorMixin, {
     actions: {
         save() {
-            this.set("isWorking", true);
-            this.get("geofence-store").save(this.get("model")).then(() => {
-                this.set("isWorking", false);
-                this.transitionToRoute("geofences");
-            });
+            this.doWork(() => this.get("geofence-store").save(this.get("model")))
+                .then(() => this.transitionToRoute("geofences"));
         },
 
         back() {

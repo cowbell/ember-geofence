@@ -1,12 +1,10 @@
 import Ember from "ember";
+import WorkingIndicatorMixin from "ember-geofence/mixins/working-indicator";
 
-export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
+export default Ember.Controller.extend(Ember.PromiseProxyMixin, WorkingIndicatorMixin, {
     actions: {
         delete(geofence) {
-            this.set("isWorking", true);
-            this.get("geofence-store").destroy(geofence).then(() => {
-                this.set("isWorking", false);
-            });
+            this.doWork(() => this.get("geofence-store").destroy(geofence));
         },
 
         add() {
@@ -18,10 +16,7 @@ export default Ember.Controller.extend(Ember.PromiseProxyMixin, {
         },
 
         removeAll() {
-            this.set("isWorking", true);
-            this.get("geofence-store").destroyAll().then(() => {
-                this.set("isWorking", false);
-            });
+            this.doWork(() => this.get("geofence-store").destroyAll());
         }
     }
 });
