@@ -1,5 +1,5 @@
 <div layout="row">
-  {{paper-input label="Notification text" flex=true value=model.notification.text}}
+  {{paper-input label="Notification text" flex=true value=model.notification.text isInvalid=showNotificationTextInvalid errortext="Notification text is required"}}
   {{#paper-select placeholder="Notify On" item-label-callback=transitionTypeLabel model=model.transitionType}}
     {{#each transitionTypes as |type|}}
       {{#paper-option value=type.id}}
