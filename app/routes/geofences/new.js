@@ -24,8 +24,7 @@ export default Ember.Route.extend({
     setupController(controller, model) {
         controller.setProperties({
             promise: model.promise,
-            isValid: null,
-            validate: false
+            showErrors: false
         });
     }
 });

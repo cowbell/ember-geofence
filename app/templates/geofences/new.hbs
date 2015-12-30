@@ -10,5 +10,5 @@
 {{working-indicator isWorking=isWorking}}
 
 {{#loading-container promise=promise}}
-  {{geofence-form model=model validate=validate isValid=isValid}}
+  {{geofence-form model=model changeValidState="changeValidState" showErrors=showErrors}}
 {{/loading-container}}
