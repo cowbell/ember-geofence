@@ -1,7 +1,6 @@
 # Ember-geofence
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+![optimised](https://cloud.githubusercontent.com/assets/1286444/12080802/75118250-b267-11e5-8684-c5f627d3290c.gif)
 
 ## Prerequisites
 
