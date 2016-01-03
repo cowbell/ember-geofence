@@ -41,8 +41,8 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Building
 
-* `ember cordova:build` (development)
-* `ember cordova:build --environment production` (production)
+* `ember cordova:build --platform android` (development)
+* `ember cordova:build --platform android --environment production` (production)
 
 ### Deploying
 
